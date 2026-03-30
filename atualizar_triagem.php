@@ -28,6 +28,18 @@ try {
         $campos[] = "observacoes = :observacoes";
         $valores[':observacoes'] = $dados['observacoes'];
     }
+    if (isset($dados['motivo'])) {
+        $campos[] = "motivo = :motivo";
+        $valores[':motivo'] = $dados['motivo'];
+    }
+    if (isset($dados['defeito'])) {
+        $campos[] = "defeito = :defeito";
+        $valores[':defeito'] = $dados['defeito'];
+    }
+    if (array_key_exists('numero_chamado', $dados)) {
+        $campos[] = "numero_chamado = :numero_chamado";
+        $valores[':numero_chamado'] = $dados['numero_chamado'];
+    }
 
     if (empty($campos)) {
         echo json_encode(["success" => false, "message" => "Nenhum campo enviado para atualizar."]);
